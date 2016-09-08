@@ -9,6 +9,9 @@
 .message { font-size: 1.3em; font-weight: bold; }
 .message.valid-entry { color: green; }
 .message.invalid-entry { color: red; }
+
+#lunch-menu.valid-entry { border-color: green; }
+#lunch-menu.invalid-entry { border-color: red; }
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
@@ -20,7 +23,7 @@
       <div class="form-group">
         <input id="lunch-menu" type="text"
                                placeholder="list comma separated dishes you usually have for lunch"
-                               class="form-control" ng-model="lunchItems">
+                               class="form-control {{messageClass}}" ng-model="lunchItems">
       </div>
       <div class="form-group">
         <button ng-click="checkTooMuch();" class="btn btn-default">Check If Too Much</button>
