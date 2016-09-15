@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-app="ShoppingListCheckOff">
+    <div class="container">
+      <h1>Shopping List Check Off</h1>
+      <div class="row">
+        <!-- To Buy List -->
+        <div class="col-md-6" ng-controller="ToBuyShoppingController as toBuy">
+          <h2>To Buy:</h2>
+          <ul>
+            <li ng-repeat="item in toBuy.itemsToBuy">
+              Buy {{item.quantity}} {{item.name}}
+              <button class="btn btn-default" ng-click="toBuy.buyItem($index)">
+                <span class="glyphicon glyphicon-ok"></span> Bought
+              </button>
+            </li>
+          </ul>
+
+          <div ng-if="toBuy.noItemsToBuy()" class="emptyMessage">
+            Everything is bought!
+          </div>
+        </div>
+
+        <!-- Already Bought List -->
+        <div class="col-md-6" ng-controller="AlreadyBoughtShoppingController as alreadyBought">
+          <h2>Already Bought:</h2>
+          <ul>
+            <li ng-repeat="item in alreadyBought.itemsAlreadyBought">
+              Bought {{item.quantity}} {{item.name}}
+            </li>
+          </ul>
+
+          <div ng-if="!alreadyBought.anyItemsBought()" class="emptyMessage">
+            You haven't bought anything yet.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
