@@ -1,0 +1,10 @@
+<div class="row menu-item" ng-repeat="item in foundItemsDirectiveController.foundItems">
+  <div class="col-xs-7">
+    {{item.name}}
+  </div>
+  <div class="col-xs-5">
+    <button class="btn btn-danger" ng-click="foundItemsDirectiveController.dontWantThisOne($index)">
+      Don't Want This One
+    </button>
+  </div>
+</div>
