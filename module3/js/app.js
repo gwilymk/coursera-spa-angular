@@ -9,10 +9,14 @@
     var narrowItDown = this;
 
     narrowItDown.searchTerm = '';
-    narrowItDown.menuItems = [];
 
-    narrowItDown.searchMenu = function () {
-      MenuSearchService.getMatchedMenuItems(narrowItDown.searchTerm)
+    narrowItDown.searchMenu = function (searchTerm) {
+      if (searchTerm === '') {
+        narrowItDown.menuItems = [];
+        return;
+      }
+
+      MenuSearchService.getMatchedMenuItems(searchTerm)
         .then(function (foundItems) {
           narrowItDown.menuItems = foundItems;
         });
@@ -34,7 +38,7 @@
         .then(function (result) {
           var items = result.data.menu_items;
           return items.filter(function (item) {
-            return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
+            return item.description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1;
           });
         });
     };
@@ -46,7 +50,7 @@
       restrict: 'E',
       scope: {
         foundItems: '<',
-        onRemove: '&onRemove'
+        onRemove: '&'
       },
       controller: FoundItemsDirectiveController,
       bindToController: true,
@@ -59,6 +63,11 @@
 
     foundItemsDirectiveController.dontWantThisOne = function (index) {
       foundItemsDirectiveController.onRemove({index: index});
+    };
+
+    foundItemsDirectiveController.noItems = function () {
+      return foundItemsDirectiveController.foundItems &&
+        foundItemsDirectiveController.foundItems.length === 0;
     };
   }
 })();

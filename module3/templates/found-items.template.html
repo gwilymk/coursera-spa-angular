@@ -1,10 +1,20 @@
 <div class="row menu-item" ng-repeat="item in foundItemsDirectiveController.foundItems">
-  <div class="col-xs-7">
-    {{item.name}}
+  <div class="col-xs-3">
+    {{item.name}} ({{item.short_name}})
   </div>
-  <div class="col-xs-5">
+  <div class="col-xs-7">
+    {{item.description}}
+  </div>
+  <div class="col-xs-2">
     <button class="btn btn-danger" ng-click="foundItemsDirectiveController.dontWantThisOne($index)">
       Don't Want This One
     </button>
+  </div>
+</div>
+<div class="row" ng-show="foundItemsDirectiveController.noItems()">
+  <div class="col-xs-12">
+    <p class="bg-danger">
+      No Results Found
+    </p>
   </div>
 </div>
