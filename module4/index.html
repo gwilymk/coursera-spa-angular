@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Module 4 Solution</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+  </head>
+
+  <body ng-app="MenuApp">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" ui-sref="home">Food LLC</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <ui-view></ui-view>
+    </div>
+
+    <script src="js/angular.js"></script>
+    <script src="js/ui-router.js"></script>
+
+    <script src="js/menuapp.module.js"></script>
+    <script src="js/categories.component.js"></script>
+    <script src="js/items.component.js"></script>
+
+    <script src="js/data.module.js"></script>
+    <script src="js/menudata.service.js"></script>
+
+    <script src="js/routes.js"></script>
+  </body>
+</html>
